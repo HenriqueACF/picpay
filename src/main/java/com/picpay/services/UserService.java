@@ -2,6 +2,7 @@ package com.picpay.services;
 
 import com.picpay.domain.user.User;
 import com.picpay.domain.user.UserType;
+import com.picpay.dtos.UserDTO;
 import com.picpay.repositories.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,10 @@ public class UserService {
 
     public void saveUser(User user) {
         this.repository.save(user);
+    }
+
+    public User createUser(UserDTO data) {
+        User newUser = new User(data);
+        this.saveUser(newUser);
     }
 }

@@ -1,6 +1,6 @@
-package com.picpay_simplificado.domain.transaction;
+package com.picpay.domain.transaction;
 
-import com.picpay_simplificado.domain.user.User;
+import com.picpay.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

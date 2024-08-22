@@ -1,4 +1,4 @@
-package com.picpay_simplificado.domain.user;
+package com.picpay.domain.user;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,14 +9,14 @@ import lombok.Setter;
 import java.math.BigDecimal;
 
 
-@Entity(name="users")
-@Table(name="users")
+@Entity(name = "users")
+@Table(name = "users")
 @Getter
 @Setter
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class User {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,6 +30,6 @@ public class User {
     private BigDecimal balance;
     @Enumerated(EnumType.STRING)
     private UserType userType;
-    
-    
+
+
 }

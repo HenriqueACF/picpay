@@ -1,6 +1,6 @@
-package com.picpay_simplificado.repositories;
+package com.picpay.repositories;
 
-import com.picpay_simplificado.domain.user.User;
+import com.picpay.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

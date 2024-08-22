@@ -1,8 +1,8 @@
-package com.picpay_simplificado.services;
+package com.picpay.services;
 
-import com.picpay_simplificado.domain.user.User;
-import com.picpay_simplificado.domain.user.UserType;
-import com.picpay_simplificado.repositories.UserRepository;
+import com.picpay.domain.user.User;
+import com.picpay.domain.user.UserType;
+import com.picpay.repositories.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

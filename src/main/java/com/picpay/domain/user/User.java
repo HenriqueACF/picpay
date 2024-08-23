@@ -32,7 +32,12 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserType userType;
 
-    public void User(UserDTO data) {
+    public User(UserDTO data) {
         this.firstName = data.firstName();
+        this.lastName = data.lastName();
+        this.balance = data.balance();
+        this.userType = data.userType();
+        this.password = data.password();
+        this.email = data.email();
     }
 }

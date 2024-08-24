@@ -1,8 +1,8 @@
-package com.picpay.controllers;
+package com.picpay.Transaction.controller;
 
-import com.picpay.domain.transaction.Transaction;
-import com.picpay.dtos.TransactionDTO;
-import com.picpay.services.TransactionService;
+import com.picpay.Transaction.domain.Transaction;
+import com.picpay.Transaction.dtos.TransactionDTO;
+import com.picpay.Transaction.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

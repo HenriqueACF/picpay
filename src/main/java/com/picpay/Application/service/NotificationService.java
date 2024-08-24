@@ -1,10 +1,8 @@
-package com.picpay.services;
+package com.picpay.Application.service;
 
-import com.picpay.domain.user.User;
-import com.picpay.dtos.NotificationDTO;
+import com.picpay.User.domain.User;
+import com.picpay.Application.dtos.NotificationDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 

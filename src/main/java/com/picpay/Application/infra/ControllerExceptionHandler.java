@@ -1,6 +1,6 @@
-package com.picpay.infra;
+package com.picpay.Application.infra;
 
-import com.picpay.dtos.ExceptionDTO;
+import com.picpay.Application.dtos.ExceptionDTO;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;

@@ -25,6 +25,7 @@ class UserRepositoryTest {
     @Autowired
     EntityManager entityManager;
 
+    //CASO DE SUCESSO
     @Test
     @DisplayName("Should get User return successfully from database")
     void findUserByDocumentSuccess() {
@@ -43,6 +44,26 @@ class UserRepositoryTest {
         Optional<User> result =  this.userRepository.findUserByDocument(document);
 
         assertThat(result.isPresent());
+    }
+
+    //CASO DE FALHA
+    @Test
+    @DisplayName("Should NOT get User from database WHEN USEr not exists")
+    void findUserByDocumentError() {
+        String document = "12345678910";
+        UserDTO data = new UserDTO(
+                "Henrique",
+                "Assis",
+                document,
+                new BigDecimal(10),
+                "henrique@test.com",
+                "Senha123#",
+                UserType.COMMON);
+
+
+        Optional<User> result =  this.userRepository.findUserByDocument(document);
+
+        assertThat(result.isEmpty());
     }
 
     private User createUser(UserDTO data){

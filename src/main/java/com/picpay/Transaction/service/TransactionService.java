@@ -22,9 +22,6 @@ public class TransactionService {
     @Autowired
     private TransactionRepository repository;
 
-//    @Autowired
-//    private RestTemplate restTemplate;
-
     @Autowired
     private AuthorizationService authService;
 

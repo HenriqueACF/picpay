@@ -8,14 +8,12 @@ import com.picpay.User.domain.User;
 import com.picpay.Transaction.dtos.TransactionDTO;
 import com.picpay.Transaction.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 
 import java.time.LocalDateTime;
 
 @Service
-
 public class TransactionService {
     @Autowired
     private UserService userService;
@@ -59,4 +57,3 @@ public class TransactionService {
         return newTransaction;
     }
 }
-

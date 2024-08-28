@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/transactions")
 public class TransactionController {
-
     @Autowired
     private TransactionService transactionService;
 
@@ -23,5 +22,4 @@ public class TransactionController {
         Transaction newTransaction = this.transactionService.createTransaction(transaction);
         return new ResponseEntity<>(newTransaction, HttpStatus.OK);
     }
-
 }

@@ -18,13 +18,12 @@ public class ControllerExceptionHandler {
 
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity threat404(EntityNotFoundException exception) {
-        ExceptionDTO exceptionDTO = new ExceptionDTO("Usuario não encontrado.", "404");
         return ResponseEntity.notFound().build();
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity threatGeneralExceptions(Exception exception) {
-        ExceptionDTO exceptionDTO = new ExceptionDTO(exception.getMessage(), "500");
-        return ResponseEntity.internalServerError().body(exceptionDTO);
-    }
+//    @ExceptionHandler(Exception.class)
+//    public ResponseEntity threatGeneralException(Exception exception){
+//        ExceptionDTO exceptionDTO = new ExceptionDTO(exception.getMessage(), "500");
+//        return ResponseEntity.internalServerError().body(exceptionDTO);
+//    }
 }

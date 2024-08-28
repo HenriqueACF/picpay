@@ -1,6 +1,7 @@
 package com.picpay.Transaction.service;
 
 import com.picpay.Shared.service.AuthorizationService;
+import com.picpay.Shared.service.NotificationService;
 import com.picpay.Transaction.dtos.TransactionDTO;
 import com.picpay.Transaction.repository.TransactionRepository;
 import com.picpay.User.domain.User;
@@ -34,7 +35,7 @@ class TransactionServiceTest {
     private AuthorizationService authService;
 
     @Mock
-    com.picpay.Shared.dtos.service.NotificationService notificationService;
+    private NotificationService notificationService;
 
     @Autowired
     @InjectMocks
@@ -57,7 +58,7 @@ class TransactionServiceTest {
                 "Senha123#",
                 new BigDecimal(10),
                 UserType.COMMON);
-        User reciver = new User(
+        User receiver = new User(
                 2L,
                 "João",
                 "Dantas",
@@ -69,7 +70,7 @@ class TransactionServiceTest {
         );
 
         when(userService.findUserById(1L)).thenReturn(sender);
-        when(userService.findUserById(2L)).thenReturn(reciver);
+        when(userService.findUserById(2L)).thenReturn(receiver);
 
         when(authService.authorizeTransaction(any(), any())).thenReturn(true);
 
@@ -81,11 +82,11 @@ class TransactionServiceTest {
         sender.setBalance(new BigDecimal(0));
         verify(userService, times(1)).saveUser(sender);
 
-        reciver.setBalance(new BigDecimal(20));
-        verify(userService, times(1)).saveUser(reciver);
+        receiver.setBalance(new BigDecimal(20));
+        verify(userService, times(1)).saveUser(receiver);
 
         verify(notificationService, times(1)).sendNotification(sender, "Transação realizada com sucesso.");
-        verify(notificationService, times(1)).sendNotification(reciver, "Transação recebida com sucesso.");
+        verify(notificationService, times(1)).sendNotification(receiver, "Transação recebida com sucesso.");
     }
 
     @Test
@@ -101,7 +102,7 @@ class TransactionServiceTest {
                 "Senha123#",
                 new BigDecimal(10),
                 UserType.COMMON);
-        User reciver = new User(
+        User receiver = new User(
                 2L,
                 "João",
                 "Dantas",
@@ -113,7 +114,7 @@ class TransactionServiceTest {
         );
 
         when(userService.findUserById(1L)).thenReturn(sender);
-        when(userService.findUserById(2L)).thenReturn(reciver);
+        when(userService.findUserById(2L)).thenReturn(receiver);
 
         when(authService.authorizeTransaction(any(), any())).thenReturn(false);
 

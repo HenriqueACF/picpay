@@ -1,21 +1,22 @@
 package com.picpay.Transaction.service;
 
 import com.picpay.Shared.service.AuthorizationService;
+import com.picpay.Shared.service.NotificationService;
 import com.picpay.User.service.UserService;
 import com.picpay.Transaction.domain.Transaction;
 import com.picpay.User.domain.User;
 import com.picpay.Transaction.dtos.TransactionDTO;
 import com.picpay.Transaction.repository.TransactionRepository;
-import com.picpay.Shared.dtos.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 
 import java.time.LocalDateTime;
 
 @Service
-public class TransactionService {
 
+public class TransactionService {
     @Autowired
     private UserService userService;
 
@@ -26,37 +27,36 @@ public class TransactionService {
     private AuthorizationService authService;
 
     @Autowired
-    NotificationService notificationService;
+    private NotificationService notificationService;
 
-    public Transaction createTransaction(TransactionDTO transactionDTO) throws Exception {
-        User sender = this.userService.findUserById(transactionDTO.senderId());
-        User reciver = this.userService.findUserById(transactionDTO.reciverId());
+    public Transaction createTransaction(TransactionDTO transaction) throws Exception {
+        User sender = this.userService.findUserById(transaction.senderId());
+        User receiver = this.userService.findUserById(transaction.receiverId());
 
-        userService.validateTransaction(sender, transactionDTO.value());
+        userService.validateTransaction(sender, transaction.value());
 
-        boolean isAuthorized = this.authService.authorizeTransaction(sender, transactionDTO.value());
-        if (!isAuthorized) {
+        boolean isAuthorized = this.authService.authorizeTransaction(sender, transaction.value());
+        if(!isAuthorized){
             throw new Exception("Transação não autorizada");
         }
 
         Transaction newTransaction = new Transaction();
-        newTransaction.setAmount(transactionDTO.value());
-        newTransaction.setSender(reciver);
+        newTransaction.setAmount(transaction.value());
+        newTransaction.setSender(sender);
+        newTransaction.setReceiver(receiver);
         newTransaction.setTimestamp(LocalDateTime.now());
 
-        sender.setBalance(sender.getBalance().subtract(transactionDTO.value()));
-        reciver.setBalance(reciver.getBalance().add(transactionDTO.value()));
+        sender.setBalance(sender.getBalance().subtract(transaction.value()));
+        receiver.setBalance(receiver.getBalance().add(transaction.value()));
 
         this.repository.save(newTransaction);
-        userService.saveUser(sender);
-        userService.saveUser(reciver);
+        this.userService.saveUser(sender);
+        this.userService.saveUser(receiver);
 
-        this.notificationService.sendNotification(sender, "Transação realizada com sucesso.");
-        this.notificationService.sendNotification(reciver, "Transação recebida com sucesso.");
+        this.notificationService.sendNotification(sender, "Transação realizada com sucesso");
+        this.notificationService.sendNotification(receiver, "Transação recebida com sucesso");
 
         return newTransaction;
     }
-
-
-
 }
+

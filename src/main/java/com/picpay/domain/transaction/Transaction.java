@@ -25,7 +25,7 @@ public class Transaction {
     @JoinColumn(name = "sender_id")
     private User sender;
     @ManyToOne
-    @JoinColumn(name = "reciver_id")
-    private User reciver;
+    @JoinColumn(name = "receiver_id")
+    private User receiver;
     private LocalDateTime timestamp;
 }

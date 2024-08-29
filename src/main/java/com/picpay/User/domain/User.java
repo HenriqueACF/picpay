@@ -1,6 +1,6 @@
-package com.picpay.domain.user;
+package com.picpay.User.domain;
 
-import com.picpay.dtos.UserDTO;
+import com.picpay.User.dtos.UserDTO;
 import jakarta.persistence.*;
 import lombok.*;
 

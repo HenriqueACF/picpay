@@ -1,4 +1,4 @@
-package com.picpay.dtos;
+package com.picpay.Transactions.dtos;
 
 import java.math.BigDecimal;
 

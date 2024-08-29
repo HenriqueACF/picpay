@@ -1,6 +1,6 @@
-package com.picpay.services;
+package com.picpay.Shared.services;
 
-import com.picpay.domain.user.User;
+import com.picpay.User.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

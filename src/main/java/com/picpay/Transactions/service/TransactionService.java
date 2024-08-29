@@ -1,18 +1,17 @@
-package com.picpay.services;
+package com.picpay.Transactions.service;
 
-import com.picpay.domain.transaction.Transaction;
-import com.picpay.domain.user.User;
-import com.picpay.dtos.TransactionDTO;
-import com.picpay.repositories.TransactionRepository;
+import com.picpay.Transactions.domain.Transaction;
+import com.picpay.Transactions.dtos.TransactionDTO;
+import com.picpay.Transactions.repository.TransactionRepository;
+import com.picpay.User.service.UserService;
+import com.picpay.User.domain.User;
+import com.picpay.Shared.services.AuthorizationService;
+import com.picpay.Shared.services.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Map;
 
 @Service
 public class TransactionService {

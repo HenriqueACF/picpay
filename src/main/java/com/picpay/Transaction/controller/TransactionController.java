@@ -1,8 +1,8 @@
 package com.picpay.Transaction.controller;
 
-import com.picpay.Transaction.domain.Transaction;
 import com.picpay.Transaction.dtos.TransactionDTO;
 import com.picpay.Transaction.service.TransactionService;
+import com.picpay.Transaction.domain.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/transactions")
 public class TransactionController {
+
     @Autowired
     private TransactionService transactionService;
 
@@ -22,4 +23,5 @@ public class TransactionController {
         Transaction newTransaction = this.transactionService.createTransaction(transaction);
         return new ResponseEntity<>(newTransaction, HttpStatus.OK);
     }
+
 }

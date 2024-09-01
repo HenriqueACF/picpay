@@ -45,7 +45,7 @@ class TransactionServiceTest {
     }
 
     @Test
-    @DisplayName("Retorna sucesso quando a transação está OK")
+    @DisplayName("Retorna sucesso quando está autorizado a realizar uma trasanção ")
     void createTransactionSuccess() throws Exception {
         //CRIA USUARIOS
         User sender = new User(1L,

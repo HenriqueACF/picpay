@@ -1,8 +1,8 @@
 package com.picpay.User.controller;
 
-import com.picpay.User.domain.User;
 import com.picpay.User.dtos.UserDTO;
 import com.picpay.User.service.UserService;
+import com.picpay.User.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,13 +19,14 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody UserDTO user){
+    public ResponseEntity<User> createUser(@RequestBody UserDTO user) {
         User newUser = userService.createUser(user);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> getAllUsers(){
+
+    public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = this.userService.getAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }

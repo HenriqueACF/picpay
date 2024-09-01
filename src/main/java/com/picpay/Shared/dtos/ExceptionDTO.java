@@ -1,3 +1,7 @@
 package com.picpay.Shared.dtos;
 
-public record ExceptionDTO (String message, String statusCode){}
+public class ExceptionDTO {
+    public ExceptionDTO(String message, String statusCode) {
+    }
+}
+
